@@ -3,6 +3,7 @@ const cors = require("cors");
 const bouquetsRoutes = require("./routes/bouquets");
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
+const paymentRoutes = require("./routes/payments")
 const { NotFoundError } = require("./expressError");
 
 //create an instance of app object
@@ -21,6 +22,7 @@ app.get("/",function(req,res){
 app.use('/users',userRoutes);
 app.use("/auth",authRoutes);
 app.use('/product',bouquetsRoutes);
+app.use('/payments',paymentRoutes);
 
 /** 404 handler */
 app.use(function(req,res,next){

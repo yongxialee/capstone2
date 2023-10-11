@@ -18,7 +18,7 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-jwt": "^1.2.0",
-    "react-router-dom": "^6.15.0",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.2.0",
     "use-shopping-cart": "^3.1.8",
@@ -47,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
   }
 }

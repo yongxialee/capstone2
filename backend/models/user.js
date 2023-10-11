@@ -135,11 +135,11 @@ class User {
             if(!user) throw new NotFoundError(`No user:${username}`)
         }
         static async addTransactions(username,transactionData){
-            const {bouquetId,quantity,totalPrice} = transactionData;
+            const {productId,quantity,totalPrice} = transactionData;
             const result = await db.query(`INSERT INTO transactions (user_id,bouquet_id,quantity,total_pirce)
             VALUES ($1,$2,$3,$4)
             RETURNING transactions_id,bouquet_id,quantity,total_price`,
-            [username,bouquetId,quantity,totalPrice]);
+            [username,productId,quantity,totalPrice]);
 
             return result.rows[0];
         }

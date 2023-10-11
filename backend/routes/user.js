@@ -5,9 +5,8 @@ const {BadrequestError} = require('../expressError');
 const User = require('../models/user');
 
 const{createToken} = require('../helper/tokens');
-// const { user } = require('pg/lib/defaults');
-const {authenticateJWT,
-    ensureLoggedIn,
+
+const {ensureLoggedIn,
     ensureAdmin,
     ensureCorrectUserOrAdmin,}= require("../middleware/auth")
 
@@ -36,7 +35,7 @@ router.post('/',ensureAdmin,async function (req,res,next){
         const validator = jsonschema.validate(req.body,userNewSchema);
         if(!validator.valid){
             const errs = validator.errors.map(e => e.stack);
-            throw new BadRequestError(errs);
+            throw new BadrequestError(errs);
         }
         const user = await User.register(req.body);
     const token = createToken(user);
@@ -53,7 +52,7 @@ router.post('/',ensureAdmin,async function (req,res,next){
  *
  * Authorization required: admin
  **/
-router.get("/",async function (req,res,next){
+router.get("/",ensureAdmin,async function (req,res,next){
     try{
         const users= await User.findAll();
         return res.json({users});
@@ -69,7 +68,7 @@ router.get("/",async function (req,res,next){
  * Authorization required: admin or same user-as-:username
  **/
 
-router.get("/:username", async function (req,res,next){
+router.get("/:username",async function (req,res,next){
     try{
         const user = await User.get(req.params.username);
         return res.json({user});
@@ -87,12 +86,12 @@ router.get("/:username", async function (req,res,next){
  *
  * Authorization required: admin or same-user-as-:username
  **/
-router.patch("/:username",ensureCorrectUserOrAdmin,  async function (req,res,next){
+router.patch("/:username",  async function (req,res,next){
     try{
         const validator = jsonschema.validate(req.body, userUpdateSchema);
         if (!validator.valid) {
           const errs = validator.errors.map(e => e.stack);
-          throw new BadRequestError(errs);
+          throw new BadrequestError(errs);
         }
     
         const user = await User.update(req.params.username,req.body);
@@ -118,7 +117,7 @@ router.delete("/:username",ensureCorrectUserOrAdmin, async function (req,res,nex
 });
 router.post("/:username/transactions",async (req,res,next)=>{
     const {username} = req.params;
-    const data= req.body;
+    const {data}= req.body;
     try{
         const transactions = await User.addTransactions(username,data);
         return res.status(201).json({transactions});

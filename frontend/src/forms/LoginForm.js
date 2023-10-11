@@ -1,6 +1,7 @@
 import React,{ useContext,useState } from 'react';
 import CurrentUserContext from '../context/CurrentUserContext';
-import  { useNavigate } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+// import  { useNavigate } from "react-router-dom";
 
 
 /**login form and manage update to state on changes
@@ -15,8 +16,9 @@ export default function LoginForm() {
   };
  
   const [formData,setFormData] = useState(INITIAL_STATE);
+  // const [formErrors, setFormErrors] = useState([]);
   const [invalidLogin,setInvalidLogin]=useState(false)
-  const navigate=useNavigate()
+  const history=useHistory()
 
  
 
@@ -25,14 +27,19 @@ export default function LoginForm() {
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try{
-      await login(formData);
-      setInvalidLogin(false);
-      alert("successfully login!")
-      navigate("/product")
+       await login(formData);
+   
+        
+        alert("successfully login!")
+        history.push("/product")
+        setInvalidLogin(false);
+          
       
     }catch(e){
       console.log(e)
       setInvalidLogin(true)
+      
+     
     }
     
   }

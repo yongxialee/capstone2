@@ -1,6 +1,7 @@
 import React,{useContext, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import CurrentUserContext from '../context/CurrentUserContext';
+import { Button } from 'reactstrap';
 
 /**
  * 
@@ -12,8 +13,8 @@ import CurrentUserContext from '../context/CurrentUserContext';
  redirect to homepage after signup
 
  */
-export default function SignupForm({signup}) {
-  const navigate = useNavigate();
+export default function SignupForm() {
+  const history = useHistory();
   const INITIAL_STATE ={
     username:'',
     password:'',
@@ -23,13 +24,14 @@ export default function SignupForm({signup}) {
   };
   const [formData,setFormData]=useState(INITIAL_STATE);
   const [duplicateUser,setDuplicateUser]=useState(false)
-  const {signUp} =useContext(CurrentUserContext)
+  const {signUp} =useContext(CurrentUserContext);
   
   const handleSubmit=async (e)=>{
     e.preventDefault();
     try{
         await signUp(formData);
-        navigate("/product");
+        // history.push("/product");
+        // alert(`created user ${formData.username}`)
     }catch(e){
       if(e[0].includes("Duplicate username")){
                 
@@ -37,7 +39,7 @@ export default function SignupForm({signup}) {
         debugger;
       }
     }
-    alert(`created user ${formData.username}`)
+   
     
   }
 
@@ -125,8 +127,12 @@ export default function SignupForm({signup}) {
                   {/* <label className="form-label" for="form3Example4cdg">Repeat your password</label> */}
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button onSubmit={handleSubmit}
-                    className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Sign Up</button>
+                <p>
+                                    <Button>Submit</Button>
+                                    {duplicateUser
+                                    ? <p className="alert alert-danger">Username {formData.username} already in use</p>
+                                    : null}
+                                </p>
                 </div>
 
                 <p className="text-center text-muted mt-5 mb-0">Have already an account? <a href="/login"

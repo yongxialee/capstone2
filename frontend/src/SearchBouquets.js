@@ -1,9 +1,9 @@
 import React ,{useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function SearchForm({SearchFunc}) {
     const [formData,setFormData]=useState({name:""})
-    const navigate = useNavigate();
+    const history=useHistory();
 
     const handleChange=(e)=>{
         const {name,value}=e.target;
@@ -15,7 +15,7 @@ export default function SearchForm({SearchFunc}) {
         
         try{
             await SearchFunc(formData.name);
-            navigate('/product'); 
+            history.push('/product'); 
         }catch(e){
             console.log(e)
         }   

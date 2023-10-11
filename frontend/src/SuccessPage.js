@@ -1,7 +1,11 @@
-import React from 'react'
+
 
 export default function SuccessPage() {
   return (
-    <div>SuccessPage</div>
+    <div>
+      <h1>
+        Thank You! 🎉
+      </h1>
+    </div>
   )
 }

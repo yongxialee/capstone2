@@ -62,8 +62,8 @@ class BloomInSpringAPI {
     }
     /**edit user's profile */
     static async profileUpdate(username, formData) {
-        let res = await this.request(`users/${username}`, formData, "patch");
-        return res;
+        let res = await this.request(`users/${username}`, formData, 'patch');
+        return res.user;
     }
 
     /**search bouquets */
@@ -81,7 +81,19 @@ class BloomInSpringAPI {
          await this.request(`users/${username}`,{},'deleted');
 
     }
+    static async addTransaction(username,transactionData){
+        let res = await this.request(`users/${username}/transactions`,transactionData,'post');
+        return res.transactions;
+    }
 
+    static async getTransactions(username){
+        let res = await this.request(`users/${username}/transactions`);
+        return res.transactions;
+    }
+    static async updateTransactions(username,transactionData){
+        let res = await this.request(`users/${username}/transactions`,transactionData,'put');
+        return res.transaction;
+    }
 }
 //this token is for testuer
 BloomInSpringAPI.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +

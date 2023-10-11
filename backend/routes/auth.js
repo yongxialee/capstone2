@@ -1,14 +1,15 @@
 const express= require('express');
 const router = new express.Router();
 const ExpressError= require('../expressError');
-const db = require('../db');
-const bcrypt = require('bcrypt');
-const { BCRYPT_WORK_FACTOR } = require('../config');
+// const db = require('../db');
+// const bcrypt = require('bcrypt');
+// const { BCRYPT_WORK_FACTOR } = require('../config');
 const jsonschema = require("jsonschema");
 const userAuthSchema = require("../schemas/userAuth.json");
 const userRegisterSchema = require("../schemas/userRegister.json");
 const {BadRequestError} = require("../expressError");
 const User = require('../models/user')
+const { createToken } = require("../helper/tokens");
 
 // router.get('/',function (req,res,next){
 //     res.send("APP is working")

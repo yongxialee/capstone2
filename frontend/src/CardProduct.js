@@ -34,7 +34,7 @@ import {
   
   export default function CartProduct({product}) {
 
-    const {setItemQuantity,removeItem,}=useShoppingCart()
+    const {setItemQuantity,removeItem,formattedTotalPrice}=useShoppingCart()
   return (
     <div>
     <MDBCol>
@@ -76,9 +76,7 @@ import {
                         </p>
                       </MDBCol>
                       <MDBCol>
-                      <MDBTypography tag="h5" className="text-uppercase">
-                        Total price:{ }
-                      </MDBTypography>
+                      
                       </MDBCol>
                     </MDBRow>
                     

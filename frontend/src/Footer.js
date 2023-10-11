@@ -1,11 +1,11 @@
 import React from 'react';
+import {Button} from 'reactstrap';
 import "./Footer.css"
 import {
   MDBFooter,
   MDBContainer,
  
   MDBIcon,
-  MDBBtn
 } from 'mdb-react-ui-kit';
 
 export default function Footer() {
@@ -13,58 +13,28 @@ export default function Footer() {
     <MDBFooter className='bg-light text-center text-white'>
       <MDBContainer >
         <section className='mb-4'>
-        <MDBBtn className='mx-2' style={{ backgroundColor: '#3b5998' }} href='/'>
+        <Button >
           <MDBIcon fab icon='facebook-f' />
-        </MDBBtn>
+        </Button>
 
-          <MDBBtn
-            floating
-            className='m-1'
-            style={{ backgroundColor: '#55acee' }}
-            href='#!'
-            role='button'
-          >
+          <Button>
             <MDBIcon fab icon='twitter' />
-          </MDBBtn>
+          </Button>
 
-          <MDBBtn
-            floating
-            className='m-1'
-            style={{ backgroundColor: '#dd4b39' }}
-            href='#!'
-            role='button'
-          >
+          <Button>
             <MDBIcon fab icon='google' />
-          </MDBBtn>
-          <MDBBtn
-            floating
-            className='m-1'
-            style={{ backgroundColor: '#ac2bac' }}
-            href='#!'
-            role='button'
-          >
+          </Button>
+          <Button>
             <MDBIcon fab icon='instagram' />
-          </MDBBtn>
+          </Button>
 
-          <MDBBtn
-            floating
-            className='m-1'
-            style={{ backgroundColor: '#0082ca' }}
-            href='#!'
-            role='button'
-          >
+          <Button>
             <MDBIcon fab icon='linkedin-in' />
-          </MDBBtn>
+          </Button>
 
-          <MDBBtn
-            floating
-            className='m-1'
-            style={{ backgroundColor: '#333333' }}
-            href='#!'
-            role='button'
-          >
+          <Button>
             <MDBIcon fab icon='github' />
-          </MDBBtn>
+          </Button>
         </section>
       </MDBContainer>
 

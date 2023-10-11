@@ -2,17 +2,15 @@ import React,{useContext,useEffect,useState} from 'react';
 import BloomInSpringAPI from './api';
 import { useShoppingCart } from 'use-shopping-cart';
 import { Link } from 'react-router-dom';
-import CartProduct from './CardProduct'
+import CartProduct from './CardProduct';
+import CheckoutForm from './CheckoutForm';
 import {
-  MDBBtn,
   MDBCard,
   MDBCardBody,
-  MDBCardImage,
   MDBCardText,
   MDBCol,
   MDBContainer,
   MDBIcon,
-  MDBInput,
   MDBRow,
   MDBTypography,
   } from "mdb-react-ui-kit";
@@ -22,54 +20,9 @@ import {
 
 export default function CartPage() {
 
-  const {cartCount,cartDetails,formattedTotalPrice}=useShoppingCart()
-
-//   useEffect(()=>{
-    
-//     async function getProducts(){
-    
-//       try{
-//         let res = await BloomInSpringAPI.getAllProduct();
-//         console.log("hello", res.bouquets)
-//          setData(res.bouquets)
-             
-//       }catch(e){
-//           console.log(e)
-//       }
-      
-//     }
-//     getProducts()
-  
-//   }
-// ,[]);
-
-//   function getDefaultCart(){
-//     let cart={};
-//     for(let i=1;i<17;i++){
-//       cart[i]=0;
-//     }return cart;
-   
-//   }
-  
- 
-   
-  
-  // function addToCart(itemId){
-  //   setCartItems(previous =>({...previous,[itemId]:previous[itemId] +1}))
-
-  // }
-  // function removeFromCart(itemId){
-  //   setCartItems(previous =>({...previous,[itemId]:previous[itemId] -1}))
-  // }
-  
-  // function checkout(){
-  //   setCartItems(getDefaultCart())
-  // }
-
-
-
-  // // const {getDefaultCart,cartItems} = useContext(CurrentUserContext)
-   console.log(cartDetails)
+  const {cartCount,cartDetails,formattedTotalPrice,totalPrice,clearCart}=useShoppingCart()
+  const currency = Object.values(cartDetails)[0]?.currency || 'usd';
+   console.log(Object.entries(cartDetails))
   
   return (
   <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -102,22 +55,32 @@ export default function CartPage() {
                 </div>   }
            
              
-                </MDBRow>
-                </MDBCardBody>
-                </MDBCard>
-                <div className="pt-5">
-                      <MDBTypography tag="h6" className="mb-0">
-                        <MDBCardText tag="a" href="#!" className="text-body">
-                          <MDBIcon fas icon="long-arrow-alt-left me-2" /> Back
-                          to shop
-                        </MDBCardText>
-                      </MDBTypography>
-                    </div>
-                </MDBCol>
+              </MDBRow>
+            </MDBCardBody>
+            <MDBTypography tag="h5" className="text-uppercase">
+                Total price:{formattedTotalPrice}
+            </MDBTypography>
+            <div className="pt-5 d-flex justify-content-center gap-5 ">
+            <MDBTypography tag="h6" className="mb-0">
+              <MDBCardText tag="a" href="/product" className="text-body">
+                <MDBIcon fas icon="long-arrow-alt-left me-2" /> Back
+                  to shop
+                </MDBCardText>
+              </MDBTypography>
+              <MDBTypography>
+              <MDBCardText tag="a" href="/checkout" className="text-body">
+              Go To Checkout
+                <MDBIcon fas icon="long-arrow-alt-right me-2" /> 
+                </MDBCardText>
+              </MDBTypography>
+            </div>
+          </MDBCard>
+          
+          </MDBCol>
                 
-                </MDBRow>
+          </MDBRow>
                 
-                </MDBContainer>
-                </section>  
+      </MDBContainer>
+    </section>  
   )
 }
