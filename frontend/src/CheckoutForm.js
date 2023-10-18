@@ -72,7 +72,7 @@ export default function CheckoutForm() {
             try{
               for(const [key,productDetails] of Object.entries(cartDetails[0])){
                 let transactionData= {
-                  productId:key,
+                  bouquetId:productDetails.id,
                   quantity:productDetails.quantity,
                   totalPrice:productDetails.price * productDetails.quantity
                 };
@@ -109,7 +109,10 @@ export default function CheckoutForm() {
         // navigate('/success')
         // }
       };
-      console.log(cartDetails)
+      // const cart = cartDetails
+      for(let i=0;i<cartDetails.length;i++){
+        console.log(cartDetails[i]);
+      }
       
       
   return (

@@ -138,7 +138,7 @@ return (
                 <div key={transaction.transactionId}>
                   <p>Transaction ID: {transaction.transactionId}</p>
                   <p>Total Price: {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(transaction.totalPrice / 100)}</p>
-                  <p>Date: {new Date(transaction.createdAt).toLocaleString()}</p>
+                  <hr />
                 </div>
               ))
             ) : (

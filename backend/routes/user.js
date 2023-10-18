@@ -117,9 +117,9 @@ router.delete("/:username",ensureCorrectUserOrAdmin, async function (req,res,nex
 });
 router.post("/:username/transactions",async (req,res,next)=>{
     const {username} = req.params;
-    const {data}= req.body;
+    const {transactionData}= req.body;
     try{
-        const transactions = await User.addTransactions(username,data);
+        const transactions = await User.addTransactions(username,transactionData);
         return res.status(201).json({transactions});
     }catch(e){
         return next(e);

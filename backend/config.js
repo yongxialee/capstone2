@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV!=='producttion'){
+if(process.env.NODE_ENV!=='production'){
     require('dotenv').config()
 }
 const DB_URI=(process.env.NODE_ENV === 'test') 

@@ -22,7 +22,9 @@ export default function CartPage() {
 
   const {cartCount,cartDetails,formattedTotalPrice,totalPrice,clearCart}=useShoppingCart()
   const currency = Object.values(cartDetails)[0]?.currency || 'usd';
-   console.log(Object.entries(cartDetails))
+  //  console.log(Object.entries(cartDetails))
+  console.log(cartDetails)
+
   
   return (
   <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
