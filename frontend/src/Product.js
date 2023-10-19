@@ -10,13 +10,15 @@ import BloomInSpringAPI from "./api";
 const Product =()=>{
     
     const [data,setData]=useState();
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(()=>{
         async function getProducts(){
            
             try{
                 let res = await BloomInSpringAPI.getAllProduct();
-                setData(res.bouquets)
+                setData(res.bouquets);
+                  setIsLoading(false);
             }catch(e){
                 console.log(e)
             }
@@ -24,6 +26,12 @@ const Product =()=>{
         }
         getProducts();
     },[]);
+      if (isLoading) {
+    return (
+      <p>Loading...</p>
+    )
+  }
+
 
     return (
         <div className="products">
