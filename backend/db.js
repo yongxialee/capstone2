@@ -7,7 +7,9 @@ const {DB_URI}=require('./config')
 
 
 let client = new Client({
-  connectionString: DB_URI
+  connectionString: DB_URI,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
 });
 
 client.connect();
