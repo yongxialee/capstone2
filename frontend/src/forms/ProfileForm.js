@@ -7,7 +7,7 @@ import { Form, Label, Input, Button, FormGroup, Card, CardBody } from "reactstra
 import BloomInSpringAPI from '../api';
 
 export default function ProfileForm() {
-  const {currentUser,setCurrentUser} = useContext(CurrentUserContext);
+  const {currentUser,setCurrentUser,removeUser} = useContext(CurrentUserContext);
   const [submitStatus,setSubmitStatus]=useState('init')
   console.log(currentUser)
   const INITIAL_STATE={
@@ -27,6 +27,7 @@ export default function ProfileForm() {
         try{
             const userTransactions = await BloomInSpringAPI.getTransactions(currentUser.username);
             setTransactions(userTransactions);
+            console.log(userTransactions)
         }catch(e){
             console.log(e);
 
@@ -48,17 +49,25 @@ const handleChange = (e) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  let profileData= {
+    firstName:formData.firstName,
+    lastName:formData.lastName,
+    email:formData.email,
+    password:formData.password
+  };
+  let username=formData.username;
   let updatedUser;
   try {
-       updatedUser = await BloomInSpringAPI.profileUpdate(currentUser.username, formData);
-      if (updatedUser) {
+       updatedUser = await BloomInSpringAPI.profileUpdate(username, profileData);
+      
           setSubmitStatus("success");
-      }
+      
   } catch (error) {
+    console.log(error)
       setSubmitStatus("fail");
       return;
   }
-  setFormData(f=>({...f,password:''}));
+  setFormData(updatedUser);
   setCurrentUser(updatedUser);
   
 
@@ -81,7 +90,7 @@ return (
                                   name="username"
                                   type="text"
                                   onChange={handleChange}
-                                  placeholder={currentUser.username} 
+                                  placeholder={formData.username} 
                               />
                           </FormGroup>
                           <FormGroup>
@@ -91,7 +100,7 @@ return (
                                   name="firstName"
                                   type="text"
                                   onChange={handleChange}
-                                  placeholder={currentUser.firstName} 
+                                  placeholder={formData.firstName} 
                               />
                           </FormGroup>
                           <FormGroup>
@@ -101,7 +110,7 @@ return (
                                   name="lastName"
                                   type="text"
                                   onChange={handleChange}
-                                  placeholder={currentUser.lastName} 
+                                  placeholder={formData.lastName} 
                               />
                           </FormGroup>
                           <FormGroup>
@@ -111,7 +120,7 @@ return (
                                   name="email"
                                   type="email"
                                   onChange={handleChange}
-                                  placeholder={currentUser.email} 
+                                  placeholder={formData.email} 
                               />
                           </FormGroup>
                           <FormGroup>
@@ -121,7 +130,7 @@ return (
                                   name="password"
                                   type="password"
                                   onChange={handleChange}
-                                  placeholder={currentUser.password} 
+                                  placeholder={formData.password} 
                               />
                           </FormGroup>
                           <p>
@@ -147,8 +156,16 @@ return (
                           
                       </Form>
                   </CardBody>
+                  {/* <div className="Delete text-center mt-8">
+                    <Button
+                    onClick={()=>removeUser()}
+                    >
+                    Delete my profile
+                    </Button>
+                    </div> */}
               </Card>
           </div>
+          
       </div>
   </div>
 );

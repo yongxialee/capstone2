@@ -86,7 +86,7 @@ router.get("/:username",async function (req,res,next){
  *
  * Authorization required: admin or same-user-as-:username
  **/
-router.patch("/:username",  async function (req,res,next){
+router.patch("/:username",async function (req,res,next){
     try{
         const validator = jsonschema.validate(req.body, userUpdateSchema);
         if (!validator.valid) {
@@ -118,8 +118,11 @@ router.delete("/:username",ensureCorrectUserOrAdmin, async function (req,res,nex
 router.post("/:username/transactions",async (req,res,next)=>{
     const {username} = req.params;
     const {transactionData}= req.body;
+   const data = JSON.stringify(transactionData)
+    // console.log(req.body);
+    // res.json(req.body)
     try{
-        const transactions = await User.addTransactions(username,transactionData);
+        const transactions = await User.addTransactions(username,req.body);
         return res.status(201).json({transactions});
     }catch(e){
         return next(e);

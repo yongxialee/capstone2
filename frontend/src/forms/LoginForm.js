@@ -16,7 +16,6 @@ export default function LoginForm() {
   };
  
   const [formData,setFormData] = useState(INITIAL_STATE);
-  // const [formErrors, setFormErrors] = useState([]);
   const [invalidLogin,setInvalidLogin]=useState(false)
   const history=useHistory()
 

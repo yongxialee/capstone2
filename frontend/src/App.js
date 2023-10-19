@@ -23,41 +23,7 @@ function App() {
   const [currentUser, setCurrentUser] = useLocalStorage("currentUser", null);
   const {cartCount}=useShoppingCart()
   const [cart,setCart] = useLocalStorage("cart",null);
-  // const [stripePromise,setStripePromise]=useState(null)
-  // const [clientSecret, setClientSecret] = useState("");
-
-  
-  // const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`);
-  // const navigate=useNavigate()
-  // useEffect(()=>{
-  //   const fetchPublishableKey = async ()=>{
-  //     let res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/payments/config`)
-  //     const {publishableKey} = await res.json();
-  //     // String(publishableKey)
-  //     setStripePromise(loadStripe(publishableKey))
-  
-  //   }
-  //   fetchPublishableKey();
-  //   console.log(stripePromise)
-  // },[]);
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_BACKEND_URL}/payments`, {
-  //     method: "POST",
-  //     body: JSON.stringify({}),
-  //   }).then(async (result) => {
-  //     let { clientSecret } = await result.json();
-
-  //     setClientSecret(clientSecret);
-  //     // console.log('this is clinetC', clientSecret)
-  //   });
-  // }, []);
-  // const appearance = {
-  //   theme: 'stripe',
-  // };
-  // const options = {
-  //   clientSecret,
-  //   appearance,
-  // };
+ 
 
   useEffect(()=>{
     async function getCurrentUser(){
@@ -121,12 +87,11 @@ function App() {
   function logout(){
     setCurrentUser(null);
     setToken(null);
-    setCart(null)
   }
   
   console.log('Helloooooo',currentUser)
-  console.log(token)
-  // console.log(clientSecret)
+  // console.log(token)
+  
   return (
     <div className="App">
     

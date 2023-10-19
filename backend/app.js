@@ -13,6 +13,7 @@ const app =express();
 
 //parse request body for json
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/",function(req,res){

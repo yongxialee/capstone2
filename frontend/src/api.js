@@ -53,17 +53,13 @@ class BloomInSpringAPI {
     }
 
     static async login(formData){
-        // const data ={
-        //     username:username,
-        //     password:password
-        // };
         let res = await this.request(`auth/token`,formData,'post');
         return res.token;
     }
     /**edit user's profile */
     static async profileUpdate(username, formData) {
         let res = await this.request(`users/${username}`, formData, 'patch');
-        return res.user;
+    return res.user;
     }
 
     /**search bouquets */
