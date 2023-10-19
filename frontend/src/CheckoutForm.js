@@ -60,7 +60,7 @@ export default function CheckoutForm() {
         await stripe.confirmPayment({
           elements,
           confirmParams: {
-            return_url: "http://localhost:3001/success",
+            return_url: "https://bloominspring.onrender.com/success",
           },
         }).then(async function (result){
           if(result.paymentIntent){
