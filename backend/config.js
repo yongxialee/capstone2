@@ -3,7 +3,7 @@ if(process.env.NODE_ENV!=='production'){
 }
 const DB_URI=(process.env.NODE_ENV === 'test') 
 ? "postgresql:///flowers_test" 
-: "postgresql:///flowers";
+: "postgres://mevgpwau:a9GKX7Lm6QbqMzcSA4MTKAijSR1sYiac@mahmud.db.elephantsql.com/mevgpwau";
 
 const SECRET_KEY= process.env.SECRET_KEY || "secret";
 const STRIPE_SECRET_KEY=process.env.STRIPE_SECRET_KEY;
