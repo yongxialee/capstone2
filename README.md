@@ -1,27 +1,30 @@
 # capstone2
 Link to live https://bloominspring.onrender.com/
 
-Capstone 2
-Tech stack 
+
+## Tech stack 
 
 React will be used for the front-end development of my project and  NodeJS for the backend. This app is designed to be a web-based application. 
-Project Focus:
+## Project Focus:
 The goal is to focus on full-stack development of both the front-end and back-end. 
-Project type
+## Project type
 This app will be web-based which is for both website and mobile app.
-Project goal
+## Project goal
 This e-commerce is to allow users to shop, and view the ingredients of each product. Its features include user authentication,  shopping cart functionality, and secure online payment processing. 
-User Demographics
-The target users will be people who have sensitive or people who passionate about skincare
-Data usage 
-Product data, user data, and transaction data. The product data will be fetched data from internal  APIs (which is hardcoding)into the database system, while user data will be collected from the user register and login form. Transaction data will be created when purchases are made. 
+## User Demographics
+The target users will be people of different ages, backgrounds, and financial conditions ( price range from $15 - $175)
+## Data usage 
+Product data, user data, and transaction data. 
 
-Project Approach 
-There will be three tables for the database: users, products, and transactions. The users’ table consists of the users’ id, username email, and password. The products table consists of the id, brand, name, image, and ingredients. 
-Schema 
+The product data will be fetched data from internal  APIs (which is hardcoding)into the database system, while user data will be collected from the user register and login form. Transaction data will be created when purchases are successfully made. 
+
+## Project Approach 
+There will be three tables for the database: users, products, and transactions. The users’ table consists of the users’ id, first name, last name, email, and password. The products table consists of the product ID, brand, name, image, and ingredients. 
+The transaction table consists of username as user ID, product id, quantity, and total price.
+### Schema 
 Product table:
 
-id
+*id *
 Brand 
 name
 image
