@@ -26,11 +26,11 @@ The transaction table consists of username as user ID, product id, quantity, and
 
 ## Potential API issues:
 There’s a possibility to run into handling RESTful
-Secure information:
+#### Secure information:
 Users’ passwords will be hashed and stored in salted format. 
-App functionality:
+####  App functionality:
 register/login/logout, and check out
 The individual product can be viewed and added to a cart; checkout and proceed securely online payments 
-User flow:
+#### User flow:
 Users can access browsing products without logging in or registering and adding products to the cart (the cart will show the current total rice). However, to proceed with checkout, the user needs to register/login; 
 
