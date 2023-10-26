@@ -21,40 +21,16 @@ The product data will be fetched data from internal  APIs (which is hardcoding)i
 ## Project Approach 
 There will be three tables for the database: users, products, and transactions. The users’ table consists of the users’ id, first name, last name, email, and password. The products table consists of the product ID, brand, name, image, and ingredients. 
 The transaction table consists of username as user ID, product id, quantity, and total price.
-### Schema 
-Product table:
-
-*id *
-Brand 
-name
-image
-ingredients
 
 
-Users table:
 
-id
-username
-email
-password
-
-
-Transaction table:
-
-id
-user_id
-product_id
-qty
-total_price
-
-
-Potential API issues:
-		There’s a possibility to run into handling RESTful
+## Potential API issues:
+There’s a possibility to run into handling RESTful
 Secure information:
 Users’ passwords will be hashed and stored in salted format. 
 App functionality:
-register/login/logout, add items to your favorite list, and check out
+register/login/logout, and check out
 The individual product can be viewed and added to a cart; checkout and proceed securely online payments 
 User flow:
-Users need to register/log in to their account; then they can access browsing products, and add products to the cart (the cart will show the current total rice)
+Users can access browsing products without logging in or registering and adding products to the cart (the cart will show the current total rice). However, to proceed with checkout, the user needs to register/login; 
 
